@@ -12,7 +12,11 @@ const crates = cratesStrArr[cratesStrArr.length - 1]
 
 for (let i = cratesStrArr.length - 2; i >= 0; i--) {
   for (let j = 0; j < crates.length; j++) {
-    const crateStr = cratesStrArr[i].replaceAll("     ", " [-] ").split(" ");
+    const crateStr = cratesStrArr[i]
+      .replaceAll("     ", " [-] ")
+      .replaceAll("    [", "[-] [")
+      .replaceAll("]    ", "] [-]")
+      .split(" ");
     if (crateStr[j][1] && crateStr[j][1] !== "-") {
       crates[j].push(crateStr[j][1]);
     }
